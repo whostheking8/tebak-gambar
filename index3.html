@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Page</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #b30000, #000000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+}
+
+#startBtn {
+  background: linear-gradient(45deg, #ff0000, #6b0000);
+  color: white;
+  border: none;
+  padding: 16px 42px;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,0,0,0.7);
+}
+
+.image-wrapper {
+  display: none;
+  margin-top: 25px;
+}
+
+.image-wrapper img {
+  width: 80vw;
+  max-width: 300px;
+  border-radius: 15px;
+  animation: zoomIn 1.5s ease forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <button id="startBtn">START</button>
+
+  <div class="image-wrapper" id="imageBox">
+    <!-- 🔴 GANTI LINK PNG -->
+    <img src="<"a href="https://ibb.co.com/CKM7md7S"><img src="https://i.ibb.co.com/VYQSJySk/20251226-002548.png" alt="20251226-002548" border="0"></a>
+  </div>
+</div>
+
+<!-- AUDIO -->
+<audio id="audio" preload="auto">
+  <!-- 🔴 GANTI LINK MP3 -->
+  <source src="https://foldr.space/d/oui%20-%20jeremih%20%5Bedit%20audio%5D%20(mp3cut.net).mp3"controls></audio>
+</audio>
+
+<script>
+const startBtn = document.getElementById("startBtn");
+const imageBox = document.getElementById("imageBox");
+const audio = document.getElementById("audio");
+
+startBtn.addEventListener("click", () => {
+  // tampilkan gambar
+  startBtn.style.display = "none";
+  imageBox.style.display = "block";
+
+  // PAKSA browser siap audio
+  audio.currentTime = 0;
+  audio.volume = 0.8;
+  audio.load();
+
+  // PLAY HARUS DI DALAM CLICK
+  audio.play()
+    .then(() => {
+      console.log("Audio diputar");
+    })
+    .catch(err => {
+      console.error("Audio gagal:", err);
+    });
+});
+</script>
+
+</body>
+</html>
